@@ -26,6 +26,8 @@ enum class operation_type : uint8_t {
   add_simple_modification,
   clear_fn_function_keys,
   add_fn_function_key,
+  clear_standalone_modifiers,
+  add_standalone_modifier,
   clear_devices,
   add_device,
   complete_devices,
@@ -776,6 +778,20 @@ struct operation_type_clear_fn_function_keys_struct {
 
 struct operation_type_add_fn_function_key_struct {
   operation_type_add_fn_function_key_struct(void) : operation_type(operation_type::add_fn_function_key) {}
+
+  const operation_type operation_type;
+  key_code from_key_code;
+  key_code to_key_code;
+};
+
+struct operation_type_clear_standalone_modifiers_struct {
+  operation_type_clear_standalone_modifiers_struct(void) : operation_type(operation_type::clear_standalone_modifiers) {}
+
+  const operation_type operation_type;
+};
+
+struct operation_type_add_standalone_modifier_struct {
+  operation_type_add_standalone_modifier_struct(void) : operation_type(operation_type::add_standalone_modifier) {}
 
   const operation_type operation_type;
   key_code from_key_code;
